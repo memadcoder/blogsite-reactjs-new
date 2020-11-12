@@ -1,53 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import "./style.css";
 import Card from "../ui/card";
-import blogPost from "../../data/blog.json";
 
-const BlogPost = (props) => {
-  const [post, setPost] = useState({
-    id: "",
-    blogCategory: "",
-    blogTitle: "",
-    postedOn: "",
-    author: "",
-    blogImage: "",
-    blogText: "",
-  });
-  const [slug, setSlug] = useState("");
+import { connect } from "react-redux";
+import { fetchPostById } from "../../Redux/ActionCreator";
 
-  useEffect(() => {
-    const slug = props.match.params.slug;
-    const post = blogPost.data.find((post) => post.slug == slug);
-    setPost(post);
-    setSlug(slug);
-  }, [post, props.match.params.slug]);
-
-  if (post.blogImage == "") return null;
-
-  return (
-    <div className="blogPostContainer">
-      <Card>
-        <div className="blogHeader">
-          <span className="blogCategory">{post.blogCategory}</span>
-          <h1 className="postTitle">{post.blogTitle}</h1>
-          <span className="postedBy">
-            Posted On {post.postedOn}, By {post.author}
-          </span>
-        </div>
-
-        <div className="postImageContainer">
-          <img
-            src={require(`../../blogPostImages/${post.blogImage}`)}
-            alt="Post Image"
-          />
-        </div>
-        <div className="postContent">
-          <h3>{post.blogTitle}</h3>
-          <p>{post.blogText}</p>
-        </div>
-      </Card>
-    </div>
-  );
+const mapStateToProps = (state) => {
+  return {
+    slugPost: state.slugPost,
+  };
 };
 
-export default BlogPost;
+const mapDispatchToProps = (dispatch) => ({
+  fetchPostById: (slug) => dispatch(fetchPostById(slug)),
+});
+
+class BlogPost extends Component {
+  // componentDidMount() {
+  //   var slug = this.props.match.params.slug;
+  //   this.props.fetchPostById(slug);
+  // }
+
+  render() {
+    var slug = this.props.match.params.slug;
+    this.props.fetchPostById(slug);
+    const d = new Date(this.props.slugPost.slugPost.updatedAt);
+    var date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
+    return (
+      <div className="blogPostContainer">
+        <Card>
+          <div className="blogHeader">
+            <span className="blogCategory">
+              {this.props.slugPost.slugPost.title}
+            </span>
+            <h1 className="postTitle">{this.props.slugPost.slugPost.title}</h1>
+            <span className="postedBy">
+              Posted On {date}, By {}
+            </span>
+          </div>
+
+          <div className="postImageContainer">
+            {this.props.slugPost.slugPost.postImage ? (
+              <img
+                // src={require(`../../blogPostImages/${post.postImage}`)}
+                alt="Post Image"
+              />
+            ) : null}
+          </div>
+          <div className="postContent">
+            <h3>{this.props.slugPost.slugPost.title}</h3>
+            <p>{this.props.slugPost.slugPost.content}</p>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlogPost);

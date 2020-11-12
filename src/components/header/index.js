@@ -5,12 +5,56 @@ const Header = (props) => {
   return (
     <header className="header">
       <nav className="headerMenu">
-        <a href="#">Home</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Login</a>
-        <a href="#">Register</a>
+        <a href="/">Home</a>
+        <a href="/contact-us">Contact Us</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
       </nav>
-      <div>Social Media Links</div>
+      <div className="socialLinks">
+        <a href="http://www.github.com/memadcoder">
+          <img
+            // onClick={openSearch}
+            className="grow"
+            src={require("../../assets/icons/github.png")}
+            alt="search"
+          />
+        </a>
+
+        <a href="http://www.linkedin.com/in/memadcoder">
+          <img
+            // onClick={openSearch}
+            className="grow"
+            src={require("../../assets/icons/linkedin.png")}
+            alt="search"
+          />
+        </a>
+
+        <a href="http://www.instagram.com/memadcoder">
+          <img
+            // onClick={openSearch}
+            className="grow"
+            src={require("../../assets/icons/instagram.png")}
+            alt="search"
+          />
+        </a>
+        <a href="https://www.facebook.com/memadcoder">
+          <img
+            // onClick={openSearch}
+            className="grow"
+            src={require("../../assets/icons/facebook.png")}
+            alt="search"
+          />
+        </a>
+
+        <a href="http://www.twitter.com/memadcoder">
+          <img
+            // onClick={openSearch}
+            className="grow"
+            src={require("../../assets/icons/twitter.png")}
+            alt="search"
+          />
+        </a>
+      </div>
     </header>
   );
 };

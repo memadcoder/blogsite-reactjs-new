@@ -17,3 +17,26 @@
 .headerMenu a:hover {
   color: #5f9ea0;
 }
+
+.socialLinks {
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+  align-items: flex-end;
+}
+
+.socialLinks.active {
+  width: 150px;
+}
+
+.socialLinks img {
+  margin-left: 10px;
+}
+
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.4);
+}

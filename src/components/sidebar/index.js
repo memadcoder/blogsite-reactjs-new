@@ -1,54 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import "./style.css";
 import Card from "../ui/card";
-import blogPost from "../../data/blog.json";
 import { NavLink } from "react-router-dom";
 
-const SideBar = (props) => {
-  const [posts, setPosts] = useState([]);
+import { connect } from "react-redux";
+import { fetchRecents } from "../../Redux/ActionCreator";
 
-  useEffect(() => {
-    const posts = blogPost.data;
-    setPosts(posts);
-  }, [posts]);
-
-  return (
-    <div className="sidebarContainer" style={{ width: props.width }}>
-      <Card style={{ marginBottom: "20px" }}>
-        <div className="cardHeader">
-          <span>About Us</span>
-        </div>
-        <div className="profileImageContainer">
-          <img src={require("../../profileImage/profile.jpg")} alt="" />
-        </div>
-        <div className="cardBody">
-          <p className="personalBio">Er.Madhav Gautam | MERN Stack</p>
-        </div>
-      </Card>
-      <Card>
-        <div className="cardHeader" style={{ marginBottom: "20px" }}>
-          <span>Social Netwok</span>
-        </div>
-      </Card>
-      <Card>
-        <div className="cardHeader">
-          <span>Recent Posts</span>
-        </div>
-        <div className="recentPosts">
-          {posts.map((post) => {
-            return (
-              <NavLink key={post.id} to={`/posts/${post.slug}`}>
-                <div className="recentPost">
-                  <h3>{post.blogTitle}</h3>
-                  <span>{post.postedOn}</span>
-                </div>
-              </NavLink>
-            );
-          })}
-        </div>
-      </Card>
-    </div>
-  );
+const mapStateToProps = (state) => {
+  return {
+    recent: state.recents,
+  };
 };
 
-export default SideBar;
+const mapDispatchToProps = (dispatch) => ({
+  fetchRecents: () => dispatch(fetchRecents()),
+});
+
+class SideBar extends Component {
+  componentDidMount() {
+    this.props.fetchRecents();
+  }
+
+  render() {
+    console.log("state.recents=", this.props.recent);
+    return (
+      <div className="sidebarContainer">
+        <Card style={{ marginBottom: "20px" }}>
+          <div className="cardHeader">
+            <span>About</span>
+          </div>
+          <div className="profileImageContainer">
+            <img src={require("../../profileImage/profile.jpg")} alt="" />
+          </div>
+          <div className="cardBody">
+            <p className="personalBio">Madhav Gautam | Software Engineer</p>
+          </div>
+        </Card>
+        <Card>
+          <div className="cardHeader" style={{ marginBottom: "20px" }}>
+            <span>Social Netwok</span>
+          </div>
+        </Card>
+        <Card>
+          <div className="cardHeader">
+            <span>Recent Posts</span>
+          </div>
+          <div className="recentPosts">
+            {this.props.recent.recents.map((post) => {
+              const d = new Date(post.updatedAt);
+              var date =
+                d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
+              return (
+                <NavLink key={post._id} to={`/posts/${post._id}`}>
+                  <div className="recentPost">
+                    <h3>{post.title}</h3>
+                    <span>{date}</span>
+                  </div>
+                </NavLink>
+              );
+            })}
+          </div>
+        </Card>
+      </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

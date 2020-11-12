@@ -1,12 +1,10 @@
 import React from "react";
 import "./style.css";
-import Card from "../../components/ui/card";
 import BlogPost from "../../components/blogpost";
-import SideBar from "../../components/sidebar";
 import Layout from "../../components/layout";
 
 const Post = (props) => {
-  console.log(props);
+  console.log("props to post", props.match.params.slug);
   return (
     <Layout>
       <BlogPost {...props} />

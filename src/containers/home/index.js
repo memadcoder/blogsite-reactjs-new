@@ -2,9 +2,9 @@ import React from "react";
 import "./style.css";
 import SideBar from "../../components/sidebar";
 import Card from "../../components/ui/card";
-import RecentPosts from "./recentpost";
 import blogData from "../../data/blog.json";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/index";
+import RecentPost from "../home/recentpost";
 
 const SideImage = (props) => {
   return (
@@ -30,6 +30,7 @@ const ImageGallary = (props) => {
           <SideImage
             height={props.sideImageHeight}
             src={require(`../../blogPostImages/` + image)}
+            key={image.id}
             alt=""
           />
         ))}
@@ -61,7 +62,7 @@ const Home = (props) => {
       </Card>
 
       <Layout>
-        <RecentPosts style={{ width: "70%" }} />
+        <RecentPost style={{ width: "100%" }} />
       </Layout>
     </div>
   );
