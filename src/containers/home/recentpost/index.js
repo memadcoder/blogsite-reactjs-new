@@ -24,7 +24,7 @@ class RecentPosts extends Component {
     const d = new Date(this.props.latest.latest.updatedAt);
     var date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
     return (
-      <div style={{ width: "70%" }}>
+      <div style={{ width: "70%", overflow: "hidden" }}>
         <Card style={{ marginBottom: "20px" }}>
           <div className="postImageWrapper">
             <img
@@ -32,14 +32,24 @@ class RecentPosts extends Component {
               alt=""
             />
           </div>
-          <div style={{ textAlign: "center", height: 495, overflow: "hidden" }}>
-            <span>Latest</span>
-            <h2>{this.props.latest.latest.title}</h2>
-            <span>Posted On {date}</span>
-            {/* <span>
-              By {this.props.latest.latest.by.username}
-            </span> */}
-            <p>{this.props.latest.latest.content}</p>
+          <div
+            style={{
+              textAlign: "center",
+              height: 455,
+              overflow: "hidden",
+            }}
+          >
+            <span style={{ fontFamily: "cursive" }}>Latest</span>
+            <h2 style={{ fontFamily: "sans serif" }}>
+              {this.props.latest.latest.title}
+            </h2>
+            <span style={{ fontFamily: "monospace" }}>Posted On {date}, </span>
+            <span style={{ fontFamily: "monospace" }}>
+              By {this.props.latest.latest.by}
+            </span>
+            <p style={{ fontFamily: "serif" }}>
+              {this.props.latest.latest.content}
+            </p>
             <button style={{ position: "relative" }}>Read More...</button>
           </div>
         </Card>

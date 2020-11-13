@@ -8,7 +8,7 @@ const Header = (props) => {
         <a href="/">Home</a>
         <a href="/contact-us">Contact Us</a>
         <a href="/login">Login</a>
-        <a href="/register">Register</a>
+        <a href="/signup">Register</a>
       </nav>
       <div className="socialLinks">
         <a href="http://www.github.com/memadcoder">

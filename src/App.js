@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ContactUS from "./containers/contactus";
 import Post from "./containers/post";
 import AllPost from "./containers/allposts";
-import BlogPost from "./components/blogpost";
+import Login from "./components/login";
+import SignUp from "./components/signup";
 
 import { ConfigureStore } from "./Redux/configureStore";
 import { Provider } from "react-redux";
@@ -25,6 +26,8 @@ function App() {
           <Route path="/contact-us" component={ContactUS} />
           <Route path="/posts/:slug" component={Post} />
           <Route path="/all" component={AllPost} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
         </div>
       </Router>
     </Provider>

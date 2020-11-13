@@ -1,37 +1,41 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
-const Footer = (props) => {
+function Footer(props) {
   return (
-    <div className="footerContainer">
-      <div className="resourcesFooter">
-        <div className="resourceTitle">
-          <h3>Useful Resources</h3>
-        </div>
-        <div className="resourceContent">
-          <ul>
-            <li>Free web Design</li>
-            <li>Photoshop Design Tutorial</li>
-            <li>Search Engine Marketing Tips</li>
-            <li>Premium Website Templates</li>
+    <div className="footer">
+      <div className="footerContainer">
+        <div className="resourcesFooter">
+          <ul style={{ marginTop: 10 }}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/contact-us">Contact Us</Link>
+            </li>
+            <li>
+              <Link to="/all">Posts</Link>
+            </li>
           </ul>
         </div>
-      </div>
-      <div className="contactUsFooter">
-        <div className="contactUsTitle">
-          <h3>Contact Info</h3>
+        <div className="contactUsFooter">
+          <address>
+            32, Amarawati Marg
+            <br />
+            Koteshowr, Kathmandu
+            <br />
+            Nepal
+            <br />
+            <i>Mobile</i>:9867681865
+            <br />
+            <i>Fax</i>: ++00 000 0000
+            <br />
+            <i>Email</i>: <a href="www.gmail.com">hola@gautammadhav.com.np</a>
+          </address>
         </div>
-        <div className="contactDetails">
-          <ul>
-            <li>Address: 35,Koteshowr Kathmdu,Nepal</li>
-            <li>Email: hola@gautammadhav.com.np</li>
-            <li>Mobile: 9867681865</li>
-            <li>Fax: 214-32411-11234</li>
-          </ul>
-        </div>
-        <div className="socialLinks">
-          <h3>Follow Us</h3>
-          <a href="http://www.github.com/mgcoder2">
+        <div className="socialLinksFooter">
+          <a href="http://www.github.com/memadcoder">
             <img
               // onClick={openSearch}
               className="grow"
@@ -57,7 +61,7 @@ const Footer = (props) => {
               alt="search"
             />
           </a>
-          <a href="https://www.facebook.com/madhav.gautam.1253">
+          <a href="https://www.facebook.com/memadcoder">
             <img
               // onClick={openSearch}
               className="grow"
@@ -76,19 +80,17 @@ const Footer = (props) => {
           </a>
         </div>
       </div>
-      <div className="latestBlogFooter">
-        <div className="blogs">
-          <h3>Latest Blogs</h3>
-          <ul>
-            <li>This is latest Blog</li>
-            <li>This is latest Blog</li>
-            <li>This is latest Blog</li>
-            <li>This is latest Blog</li>
-          </ul>
-        </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <p>© Copyright 2020 Trendings Thoughts</p>
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

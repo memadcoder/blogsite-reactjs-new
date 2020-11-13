@@ -4,7 +4,7 @@ import "./style.css";
 const Logo = (props) => {
   return (
     <div className="logo">
-      <a href="#">Madhav Gautam</a>
+      <img src={require(`./trendings.png`)} alt="logo" />
     </div>
   );
 };

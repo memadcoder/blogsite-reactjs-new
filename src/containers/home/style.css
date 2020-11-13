@@ -23,3 +23,18 @@
   max-height: 100%;
   object-fit: cover;
 }
+.mainImageWrapper {
+  transition: all 0.2s ease-in-out;
+}
+
+.mainImageWrapper:hover {
+  transform: scale(1.2);
+}
+
+.sideImageWrapper {
+  transition: all 0.2s ease-in-out;
+}
+
+.sideImageWrapper:hover {
+  transform: scale(1.2);
+}

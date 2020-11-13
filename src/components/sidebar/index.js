@@ -38,7 +38,52 @@ class SideBar extends Component {
         </Card>
         <Card>
           <div className="cardHeader" style={{ marginBottom: "20px" }}>
-            <span>Social Netwok</span>
+            <span>Social Network</span>
+            <div className="socialLinksSidebar">
+              <a href="http://www.github.com/memadcoder">
+                <img
+                  // onClick={openSearch}
+                  className="grow"
+                  src={require("../../assets/icons/github.png")}
+                  alt="search"
+                />
+              </a>
+
+              <a href="http://www.linkedin.com/in/memadcoder">
+                <img
+                  // onClick={openSearch}
+                  className="grow"
+                  src={require("../../assets/icons/linkedin.png")}
+                  alt="search"
+                />
+              </a>
+
+              <a href="http://www.instagram.com/memadcoder">
+                <img
+                  // onClick={openSearch}
+                  className="grow"
+                  src={require("../../assets/icons/instagram.png")}
+                  alt="search"
+                />
+              </a>
+              <a href="https://www.facebook.com/memadcoder">
+                <img
+                  // onClick={openSearch}
+                  className="grow"
+                  src={require("../../assets/icons/facebook.png")}
+                  alt="search"
+                />
+              </a>
+
+              <a href="http://www.twitter.com/memadcoder">
+                <img
+                  // onClick={openSearch}
+                  className="grow"
+                  src={require("../../assets/icons/twitter.png")}
+                  alt="search"
+                />
+              </a>
+            </div>
           </div>
         </Card>
         <Card>
@@ -53,8 +98,26 @@ class SideBar extends Component {
               return (
                 <NavLink key={post._id} to={`/posts/${post._id}`}>
                   <div className="recentPost">
-                    <h3>{post.title}</h3>
-                    <span>{date}</span>
+                    <h3
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontFamily: "sans serif",
+                      }}
+                    >
+                      {post.title}
+                    </h3>
+                    <span
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontFamily: "monospace",
+                      }}
+                    >
+                      {date}
+                    </span>
                   </div>
                 </NavLink>
               );

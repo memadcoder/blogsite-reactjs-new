@@ -22,7 +22,10 @@ class AllPost extends Component {
 
   render() {
     return (
-      <div className="AllPostContainer" style={{ marginTop: 15 }}>
+      <div
+        className="AllPostContainer"
+        style={{ marginTop: 15, textAlign: "center", overflow: "hidden" }}
+      >
         {this.props.posts.posts.map((post) => {
           const d = new Date(post.updatedAt);
           var date =
@@ -30,10 +33,18 @@ class AllPost extends Component {
           return (
             <Card>
               <div className="blogHeader">
-                <span className="blogCategory">{post.title}</span>
-                <h1 className="postTitle">{post.title}</h1>
-                <span className="postedBy">
-                  Posted On {date}, By {}
+                <span
+                  className="blogCategory"
+                  style={{ fontFamily: "cursive" }}
+                >
+                  {post.title}
+                </span>
+                <h1 className="postTitle" style={{ fontFamily: "sans serif" }}>
+                  {post.title}
+                </h1>
+                <span className="postedBy" style={{ fontFamily: "monospace" }}>
+                  Posted On {date},{" "}
+                  <span style={{ fontFamily: "monospace" }}>By {post.by}</span>
                 </span>
               </div>
 
@@ -46,8 +57,8 @@ class AllPost extends Component {
                 ) : null}
               </div>
               <div className="postContent">
-                <h3>{post.title}</h3>
-                <p>{post.content}</p>
+                <h3 style={{ fontFamily: "sans serif" }}>{post.title}</h3>
+                <p style={{ fontFamily: "serif" }}>{post.content}</p>
               </div>
             </Card>
           );

@@ -9,7 +9,7 @@
   padding: 10px 0;
   box-sizing: border-box;
   letter-spacing: 2px;
-  color: #333;
+  color: rgb(22, 21, 21);
 }
 .profileImageContainer {
   width: 100%;
@@ -24,8 +24,8 @@
 
 .personalBio {
   font-size: 14px;
-  color: #565673;
-  font-weight: 300;
+  color: #00000ca4;
+  font-weight: 400;
   text-align: center;
   padding-bottom: 15px;
 }
@@ -39,15 +39,50 @@
   margin-bottom: 10px;
 }
 .recentPost h3 {
-  color: #6c6c6c;
+  color: #0e0d0d;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   margin: 0;
 }
 
 .recentPost span {
-  font-size: 10px;
-  font-weight: 400;
-  color: #6c6c6c66;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0a0a0a;
+}
+
+.socialLinksSidebar {
+  display: block;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 0;
+  max-width: 31%;
+}
+
+.socialLinksSidebar img {
+  padding: 2px 2px 0px;
+  margin-right: 2px;
+  height: 12px;
+  width: 12px;
+}
+
+.socialLinksSidebar.active {
+  width: 300px;
+}
+
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.4);
+}
+
+.profileImageContainer {
+  transition: all 0.2s ease-in-out;
+}
+
+.profileImageContainer:hover {
+  transform: scale(1.06);
 }

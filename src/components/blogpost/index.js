@@ -20,22 +20,37 @@ class BlogPost extends Component {
   //   var slug = this.props.match.params.slug;
   //   this.props.fetchPostById(slug);
   // }
-
-  render() {
+  componentDidUpdate() {
     var slug = this.props.match.params.slug;
     this.props.fetchPostById(slug);
+  }
+
+  render() {
+    // var slug = this.props.match.params.slug;
+    // this.props.fetchPostById(slug);
     const d = new Date(this.props.slugPost.slugPost.updatedAt);
     var date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
     return (
-      <div className="blogPostContainer">
+      <div
+        className="blogPostContainer"
+        style={{
+          textAlign: "center",
+          overflow: "hidden",
+        }}
+      >
         <Card>
           <div className="blogHeader">
-            <span className="blogCategory">
+            <span className="blogCategory" style={{ fontFamily: "cursive" }}>
               {this.props.slugPost.slugPost.title}
             </span>
-            <h1 className="postTitle">{this.props.slugPost.slugPost.title}</h1>
-            <span className="postedBy">
-              Posted On {date}, By {}
+            <h1 className="postTitle" style={{ fontFamily: "sans serif" }}>
+              {this.props.slugPost.slugPost.title}
+            </h1>
+            <span className="postedBy" style={{ fontFamily: "monospace" }}>
+              Posted On {date},{" "}
+              <span style={{ fontFamily: "monospace" }}>
+                By {this.props.slugPost.slugPost.by}
+              </span>
             </span>
           </div>
 
@@ -48,8 +63,12 @@ class BlogPost extends Component {
             ) : null}
           </div>
           <div className="postContent">
-            <h3>{this.props.slugPost.slugPost.title}</h3>
-            <p>{this.props.slugPost.slugPost.content}</p>
+            <h3 style={{ fontFamily: "sans serif" }}>
+              {this.props.slugPost.slugPost.title}
+            </h3>
+            <p style={{ fontFamily: "serif" }}>
+              {this.props.slugPost.slugPost.content}
+            </p>
           </div>
         </Card>
       </div>
